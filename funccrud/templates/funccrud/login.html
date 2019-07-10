@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="box">
+{% block content %}
+
+{% if error %}
+{{ error }}
+<br>
+<br>
+{% endif %}
+
+<h1>로그인</h1>
+
+<form method="POST" action="{% url 'login'%}">
+
+    {% csrf_token %}
+    Username:
+    <br>
+    <input name="username" type="text" value="">
+    <br>
+    Password:
+    <br>
+    <input name="password" type="password" value="">
+    <br>
+    <br>
+    <input type="submit" value="Login">
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+<a href="{%url 'welcome' %}">뒤로가기</a>
+
+{% endblock %}
+</div>
+</body>

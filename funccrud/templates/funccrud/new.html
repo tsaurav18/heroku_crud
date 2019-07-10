@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+{% load staticfiles %}
+<head>
+    <meta charset="UTF-8">
+    <title>글 쓰기</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="box">
+    <h1>글 쓰기</h1>
+    <a href="{% url 'home' %}">뒤로가기</a>
+    <form method='POST'>
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+        <br>
+        <input type="submit" value="제출하기">
+    </form>
+</div>
+</body>
+</html>
